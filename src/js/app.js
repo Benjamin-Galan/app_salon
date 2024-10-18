@@ -7,11 +7,13 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 function iniciarApp() {
-    mostrarSeccion();
+    mostrarSeccion();//muestea y oculta las secciones
     tabs(); //cambia la seccion cuando se presionen los tabs
-    botonesPaginador();
+    botonesPaginador();//agrega o quita los botones del paginador
     paginaAnterior();
     paginaSiguiente();
+
+    consultarAPI();//consulta la api en el backend de php
 }
 
 function mostrarSeccion() {
@@ -85,5 +87,40 @@ function paginaSiguiente() {
         paso++;
 
         botonesPaginador()
+    })
+}
+
+async function consultarAPI(){
+    try {
+        const url = 'http://localhost:3000/api/servicios'
+        const resultado = await fetch(url) //espera hasta que los resultados esten cargados para ejecutar el siguiente codigo
+        const servicios = await resultado.json()
+
+        mostrarServicios(servicios)
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+function mostrarServicios(servicios){
+    servicios.forEach( servicio =>{
+        const {id, nombre, precio} = servicio
+        
+        const nombreServicio = document.createElement('P')
+        nombreServicio.classList.add('nombre-servicio')
+        nombreServicio.textContent = nombre
+
+        const precioServicio = document.createElement('P')
+        precioServicio.classList.add('precio-servicio')
+        precioServicio.textContent = `$${precio}`
+
+        const servicioDiv = document.createElement('DIV')
+        servicioDiv.classList.add('servicio')
+        servicioDiv.dataset.idServicio = id;
+
+        servicioDiv.appendChild(nombreServicio)
+        servicioDiv.appendChild(precioServicio)
+        
+        document.querySelector('#servicios').appendChild(servicioDiv)
     })
 }
