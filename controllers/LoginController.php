@@ -40,9 +40,6 @@ class LoginController
                         } else {
                             header('Location: /cita');
                         }
-
-
-                        debuguear($_SESSION);
                     }
                 } else {
                     Usuario::setAlerta('error', 'Usuario no encontrado');
