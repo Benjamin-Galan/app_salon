@@ -142,6 +142,9 @@ class ActiveRecord {
         $query .= join("', '", array_values($atributos));
         $query .= " ') ";
 
+            //imprimir query para ver posibles errores
+        //return json_encode(['query'=> $query]);
+
         // Resultado de la consulta
         $resultado = self::$db->query($query);
         return [
