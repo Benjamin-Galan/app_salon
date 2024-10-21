@@ -219,8 +219,14 @@ function mostrarAlerta(mensaje, tipo, elemento, desaparece = true){
 function mostrarResumen(){
     const resumen = document.querySelector('.contenido-resumen')
 
+    //limpiar el contenido de resumen
+    while(resumen.firstChild){
+        resumen.removeChild(resumen.firstChild)
+    }
+
     if(Object.values(cita).includes('') || cita.servicios.length === ''){
         mostrarAlerta('Faltan datos de servicios, fecha u hora', 'error', '.contenido-resumen', false)
+        return
     } else {
         console.log('Todo BIEN')
     }
