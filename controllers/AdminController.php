@@ -6,8 +6,10 @@ use MVC\Router;
 
 class AdminController{
     public static function index(Router $router){
-        $router->render('admin/index', [
+        isSession();
 
+        $router->render('admin/index', [
+            'nombre' => $_SESSION['nombre']
         ]);
     }
 }
