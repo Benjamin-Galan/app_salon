@@ -14,7 +14,7 @@ function s($html) : string {
 }
 
 function isSession() :void{
-    if(!isset($_SESSION)){
-        session_start();
+    if(!isset($_SESSION['login'])){
+        header('Location: /');
     }
 }
