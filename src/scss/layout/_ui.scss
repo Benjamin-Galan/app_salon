@@ -1,36 +1,52 @@
 @use 'base/variables' as v;
 @use 'base/mixins' as m;
 
-.contenedor-app{
-    @include m.tablet{
+.contenedor-app {
+    @include m.tablet {
         @include m.grid(2, 0);
         min-height: 100vh;
     }
 }
 
-.imagen{
+.imagen {
     height: 20rem;
     background-image: url(../img/1.jpg);
     background-size: cover;
     background-position: center center;
-    @include m.tablet{
+
+    @include m.tablet {
         height: auto;
     }
 }
 
-.app{
+.app {
     width: 95%;
     margin: 0 auto;
     padding: 3rem;
 }
 
-.nombre-pagina{
+.nombre-pagina {
     text-align: center;
     margin: 5rem 0;
     font-weight: v.$bold;
 }
 
-.descripcion-pagina{
+.descripcion-pagina {
     text-align: center;
     margin-bottom: 2.5rem;
+}
+
+.barra {
+    margin: 0 0 v.$separacion  0;
+
+    @include m.tablet{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .boton {
+        margin: 0;
+        @include m.boton(v.$negro, v.$blanco);
+    }
 }
