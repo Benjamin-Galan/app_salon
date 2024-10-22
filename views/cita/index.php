@@ -1,5 +1,12 @@
+<div class="barra">
+    <p>Hola: <?php echo $nombre ?? ''?></p>
+    <a href="/logout" class="boton">Cerrar Sesión</a>
+</div>
+
 <h1 class="nombre-pagina">Crear Nueva Cita</h1>
 <p class="descripcion-pagina">Elige tus servicios y coloca tus datos</p>
+
+
 
 <div id="app">
     <nav class="tabs">
@@ -34,8 +41,7 @@
                 <input
                     type="date"
                     id="fecha"
-                    min="<?php echo date('Y-m-d', strtotime('+1 day')); ?>"
-                    >
+                    min="<?php echo date('Y-m-d', strtotime('+1 day')); ?>">
             </div>
             <div class="campo">
                 <label for="hora">Fecha</label>
@@ -55,18 +61,18 @@
     <div class="paginacion">
         <button
             id="anterior"
-            class="boton">&laquo; Anterior 
+            class="boton">&laquo; Anterior
         </button>
 
         <button
             id="siguiente"
-            class="boton">Siguiente &raquo; 
+            class="boton">Siguiente &raquo;
         </button>
     </div>
 </div>
 
-<?php 
-    $script = "
+<?php
+$script = "
     <script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>
     <script src='build/js/app.js'></script>
     ";
