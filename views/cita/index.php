@@ -1,12 +1,7 @@
-<div class="barra">
-    <p>Hola: <?php echo $nombre ?? ''?></p>
-    <a href="/logout" class="boton">Cerrar Sesión</a>
-</div>
+<?php include_once __DIR__ . '/../templates/barra.php' ?>
 
 <h1 class="nombre-pagina">Crear Nueva Cita</h1>
 <p class="descripcion-pagina">Elige tus servicios y coloca tus datos</p>
-
-
 
 <div id="app">
     <nav class="tabs">
@@ -14,7 +9,6 @@
         <button type="button" data-paso="2">Información Cita</button>
         <button type="button" data-paso="3">Resumen</button>
     </nav>
-
 
     <div id="paso-1" class="seccion">
         <h2>Servicios</h2>
