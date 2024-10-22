@@ -314,10 +314,9 @@ async function reservarCita() {
     datos.append('fecha', fecha)
     datos.append('hora', hora)
     datos.append('usuarioId', id)
-    datos.append('servicios', idServicios)
-
+    datos.append('servicios', idServicios)  
     try {
-        //peticion hacia la url
+        //peticion hacia la api
     const url = 'http://localhost:3000/api/citas'
     const respuesta = await fetch(url, {
         method: 'POST',
