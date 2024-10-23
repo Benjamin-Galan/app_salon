@@ -1,14 +1,13 @@
 import path from 'path'
 import fs from 'fs'
 import { glob } from 'glob'
-import { src, dest, watch, series } from 'gulp'
+import { src, dest, watch, series, parallel } from 'gulp'
 import * as dartSass from 'sass'
 import gulpSass from 'gulp-sass'
 import terser from 'gulp-terser'
 import sharp from 'sharp'
 
 const sass = gulpSass(dartSass)
-
 
 const sassOptions = {
     // Otras opciones de Sass
@@ -81,3 +80,4 @@ export function dev() {
 }
 
 export default series( js, css, imagenes, dev )
+export const build = parallel(css, js, imagenes);

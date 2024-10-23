@@ -19,7 +19,7 @@ class Router
 
     public function comprobarRutas()
     {
-        
+
         // Proteger Rutas...
         session_start();
 
@@ -28,7 +28,17 @@ class Router
 
         // $auth = $_SESSION['login'] ?? null;
 
-        $currentUrl = $_SERVER['PATH_INFO'] ?? '/';
+        // Obtiene la URI solicitada por el cliente (todo lo que viene después del dominio)
+        $currentUrl = strtok($_SERVER['REQUEST_URI'], '?') ?? '/';
+
+        // Explicación:
+        // - $_SERVER['REQUEST_URI']: Contiene la URI completa de la solicitud, incluyendo la query string (parte después del '?').
+        // - strtok($_SERVER['REQUEST_URI'], '?'): Divide la URI en dos partes, usando '?' como delimitador.
+        //   - Devuelve la parte antes del '?' (la ruta principal).
+        // - Si strtok no encuentra una parte (es decir, si la URI está vacía), se utiliza el operador de fusión nula (??) 
+        //   para asignar '/' como valor predeterminado.
+        // Esto asegura que $currentUrl siempre tenga un valor válido, ya sea la ruta solicitada o '/' si no hay ninguna.
+
         $method = $_SERVER['REQUEST_METHOD'];
 
         if ($method === 'GET') {
@@ -38,7 +48,7 @@ class Router
         }
 
 
-        if ( $fn ) {
+        if ($fn) {
             // Call user fn va a llamar una función cuando no sabemos cual sera
             call_user_func($fn, $this); // This es para pasar argumentos
         } else {

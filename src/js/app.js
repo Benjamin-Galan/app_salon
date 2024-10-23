@@ -109,7 +109,7 @@ function paginaSiguiente() {
 
 async function consultarAPI() {
     try {
-        const url = 'http://localhost:3000/api/servicios'
+        const url = '/api/servicios'
         const resultado = await fetch(url) //espera hasta que los resultados esten cargados para ejecutar el siguiente codigo
         const servicios = await resultado.json()
 
@@ -317,7 +317,10 @@ async function reservarCita() {
     datos.append('servicios', idServicios)  
     try {
         //peticion hacia la api
-    const url = 'http://localhost:3000/api/citas'
+        //location.origin retorna la ruta de nuestro proyecto
+        //const url = `${location.origin}/api/citas`
+        //dejar la ruta sin el localhost en caso de que el back y front esten en el mismo hosting
+    const url = `/api/citas`
     const respuesta = await fetch(url, {
         method: 'POST',
         body: datos //forma de comunicarse con formData
