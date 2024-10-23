@@ -114,6 +114,7 @@ class ActiveRecord {
         $query = "SELECT * FROM " . static::$tabla  ." WHERE id = {$id}";
         $resultado = self::consultarSQL($query);
         return array_shift( $resultado ) ;
+        //retorna el primer elemento de un arreglo
     }
 
     // Busca un registro por su id
@@ -121,6 +122,13 @@ class ActiveRecord {
         $query = "SELECT * FROM " . static::$tabla  ." WHERE {$columna} = '{$valor}'";
         $resultado = self::consultarSQL($query);
         return array_shift( $resultado ) ;
+        //retorna el primer elemento de un arreglo
+    }
+
+    // Consulta plana de SQL (Utilizar cuando los metodos del modelo no son sufucientes)
+    public static function SQL($query) {
+        $resultado = self::consultarSQL($query);
+        return $resultado;
     }
 
     // Obtener Registros con cierta cantidad
