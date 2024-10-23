@@ -23,6 +23,9 @@
     width: 95%;
     margin: 0 auto;
     padding: 3rem;
+    @include m.tablet{
+        overflow: scroll;
+    }
 }
 
 .nombre-pagina {
@@ -48,5 +51,19 @@
     .boton {
         margin: 0;
         @include m.boton(v.$negro, v.$blanco);
+    }
+}
+
+.barra-servicios{
+    margin-bottom: v.$separacion;
+
+    @include m.tablet{
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+    }
+
+    .boton{
+        margin: 0 0 1rem 0;
     }
 }
