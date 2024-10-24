@@ -88,7 +88,8 @@ class Email
         $mail->send();
     }
 
-    public function enviarInstrucciones(){
+    public function enviarInstrucciones()
+    {
         $mail = new PHPMailer();
 
         $mail = new PHPMailer();
